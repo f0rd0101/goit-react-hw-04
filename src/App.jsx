@@ -1,5 +1,6 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import SearchBar from "./components/SearchBar/SearchBar";
+import { fetchPhotos } from "./components/photoService";
 
 function App() {
   const [query, setQuery] = useState("");
@@ -12,6 +13,14 @@ function App() {
     setQuery(newQuery);
     console.log(newQuery);
   };
+
+  useEffect(()=>{
+    async function getImage(){
+      const data  = await fetchPhotos()
+    }
+
+    getImage()
+  },[])
 
   return (
     <>
