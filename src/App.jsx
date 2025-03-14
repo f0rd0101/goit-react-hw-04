@@ -15,12 +15,28 @@ function App() {
   };
 
   useEffect(()=>{
+    console.log(query);
+    
     async function getImage(){
-      const data  = await fetchPhotos()
+      try{
+        const data  = await fetchPhotos()
+        console.log(data);
+        
+        
+        
+      }
+      catch(error){
+       console.log(error);
+       
+ 
+      }
+      
+      
+      
     }
 
     getImage()
-  },[])
+  },[query])
 
   return (
     <>

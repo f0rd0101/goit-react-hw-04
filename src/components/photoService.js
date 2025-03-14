@@ -7,5 +7,5 @@ export const fetchPhotos = async (page, query) => {
   const response = await axios.get(
     `${BASE_URL}/search/photos?page=${page}&per_page=12&client_id=${ACCESS_KEY}&query=${query}`
   );
-  return response.data;
+  return response.data.results;
 };
