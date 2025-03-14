@@ -1,46 +1,30 @@
 import { useEffect, useState } from "react";
 import SearchBar from "./components/SearchBar/SearchBar";
 import { fetchPhotos } from "./components/photoService";
+import ImageGallery from "./components/ImageGallery/ImageGallery";
 
 function App() {
-  const [query, setQuery] = useState("");
-
-  const handleSubmit = (newQuery) => {
-    if (newQuery.trim() === "") {
-      alert("Необхідно ввести текст для пошуку зображень!");
-      return;
-    }
-    setQuery(newQuery);
-    console.log(newQuery);
-  };
-
-  useEffect(()=>{
-    console.log(query);
-    
-    async function getImage(){
-      try{
-        const data  = await fetchPhotos()
-        console.log(data);
-        
-        
-        
-      }
-      catch(error){
-       console.log(error);
-       
+  const [query, setQuery] = useState([]);
  
-      }
-      
-      
+
+ 
+  const handleSearch = async (newQuery)=>{
+    try{
+      const data = await fetchPhotos(newQuery);
+      setQuery(data)
+      console.log(data);
       
     }
-
-    getImage()
-  },[query])
-
+    catch(error){
+      console.log(error);
+      
+    }
+  };
   return (
     <>
-      <SearchBar onSubmit={handleSubmit} />
+      <SearchBar onSearch={handleSearch} />
+      <ImageGallery items ={query}/>
+      
     </>
   );
 }
