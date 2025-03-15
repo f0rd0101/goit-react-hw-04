@@ -1,0 +1,12 @@
+.item_ul{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+.item_li{
+    display: flex;
+    justify-content: center;
+}
+.item_image{
+    width: 300px;
+}
