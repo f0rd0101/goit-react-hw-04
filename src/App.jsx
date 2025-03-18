@@ -2,7 +2,8 @@ import { useEffect, useState } from "react";
 import SearchBar from "./components/SearchBar/SearchBar";
 import { fetchPhotos } from "./components/photoService";
 import ImageGallery from "./components/ImageGallery/ImageGallery";
-// import LoadMoreBtn from "./components/LoadMoreBtn/LoadMoreBtn";
+import s from './App.module.css'
+import LoadMoreBtn from "./components/LoadMoreBtn/LoadMoreBtn";
 
 function App() {
   const [query, setQuery] = useState([]);
@@ -10,7 +11,10 @@ function App() {
   const [searchPhotos,setSeachPhotos] = useState("");
  
 
- 
+  const handlePage = ()=>{
+    setPage(page+1)
+
+  }
  
   const handleSearch = (topic)=>{
     setSeachPhotos(topic)
@@ -47,8 +51,7 @@ function App() {
     <>
       <SearchBar onSearch={handleSearch} />
       <ImageGallery items ={query}/>
-        {query.length > 0 && <button type='button'  onClick={()=>setPage(page+1)} >Load more images</button>}  
-       {/* <LoadMoreBtn/>  */}
+        {query.length > 0 && <LoadMoreBtn query={query} handlePage={handlePage}/> }
     
 
       

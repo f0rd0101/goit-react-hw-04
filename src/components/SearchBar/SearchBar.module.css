@@ -1,7 +1,14 @@
 .bar_div{
-    background-color:#90E4C1;
+    background-color:#805A40;
     height: 50px;
     display: flex;
     justify-content: center;
     align-items: center;
+}
+.button{
+    background-color:#7B967A;
+    border: 1px solid #7B967A;
+    color: white;
+    border-radius: 2px;
+    
 }

@@ -1,15 +1,15 @@
-// import React from 'react'
-// import s from '../LoadMoreBtn/LoadMoreBtn.module.css'
+import React from 'react'
+import s from '../LoadMoreBtn/LoadMoreBtn.module.css'
 
-// const LoadMoreBtn = () => {
-//   return (
-//     <div className={s.loadbutton}>
+const LoadMoreBtn = ({handlePage}) => {
+  return (
+    <div className={s.loadbutton}>
         
-//     <button type='button' className={s.loadme} onClick={()=>{setPage(page+1)}} >Load more images</button>
+    <button type='button' className={s.loadme} onClick={handlePage} >Load more images</button>
 
   
-//     </div>
-//   )
-// }
+    </div>
+  )
+}
 
-// export default LoadMoreBtn
+export default LoadMoreBtn

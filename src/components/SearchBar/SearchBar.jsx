@@ -22,7 +22,7 @@ const SearchBar = ({ onSearch }) => {
           value={inputValue}
           onChange={(event) => setInputValue(event.target.value)}
         />
-        <button type="submit">Search</button>
+        <button type="submit" className={s.button}>Search</button>
       </form>
     </header>
     </div>

@@ -1,12 +1,16 @@
 .item_ul{
     display: flex;
-    flex-direction: column;
+    flex-direction: row;
     justify-content: center;
+    gap: 10px;
+    flex-wrap: wrap;
 }
 .item_li{
     display: flex;
     justify-content: center;
+    max-width: fit-content;
 }
 .item_image{
     width: 300px;
+    height: 200px;
 }
