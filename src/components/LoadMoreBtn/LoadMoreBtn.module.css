@@ -1,0 +1,10 @@
+.loadbutton{
+    display: flex;
+    justify-content: center;
+   
+}
+.loadme{
+    background-color: cadetblue;
+    padding: 15px;
+    color: white;
+}
