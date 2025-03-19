@@ -5,6 +5,8 @@ import ImageGallery from "./components/ImageGallery/ImageGallery";
 import s from './App.module.css'
 import LoadMoreBtn from "./components/LoadMoreBtn/LoadMoreBtn";
 import ImageModal from "./components/ImageModal/ImageModal";
+import ErrorMessage from "./components/ErrorMessage/ErrorMessage";
+import Loader from "./components/Loader/Loader";
 
 function App() {
   const [query, setQuery] = useState([]);
@@ -13,6 +15,8 @@ function App() {
   const [isOpen,setIsOpen] = useState(false);
   const [modalImage, setModalImage] = useState("");
   const [alt, setAlt] = useState("");
+  const [error, setError] = useState(false);
+  const [loader, setLoader] = useState(false);
  
 
   const handlePage = ()=>{
@@ -39,6 +43,8 @@ function App() {
     console.log(page,searchPhotos);
     async function getData() {
         try{
+        setError(false);
+        setLoader(true);
      
         if(searchPhotos){
         const data = await fetchPhotos(page, searchPhotos);
@@ -49,9 +55,12 @@ function App() {
  
       
     }
-    catch(error){
-      console.log(error);
+    catch{
+      setError(true);
       
+    }
+    finally{
+      setLoader(false)
     }
       
     }
@@ -63,9 +72,12 @@ function App() {
 
   return (
     <>
+    
       <SearchBar onSearch={handleSearch} />
       <ImageGallery items ={query}  openModal={openModal}  modalContent={handleModalContent}/>
         {query.length > 0 && <LoadMoreBtn query={query} handlePage={handlePage}/> }
+        {loader && <Loader />}
+    {error && <ErrorMessage />}
         <ImageModal openModal={isOpen} closeModal={closeModal} alt={alt} src={modalImage}/>
         
     
